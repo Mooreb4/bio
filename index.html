@@ -10,6 +10,8 @@
         async function main() {
             let pyodide = await loadPyodide(); 
 
+            await pyodide.loadPackage("numpy"); 
+
             // Execute Python code directly
             let output = pyodide.runPython(`
                 import numpy as np
