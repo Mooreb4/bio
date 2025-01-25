@@ -14,7 +14,7 @@
       await pyodide.loadPackage('src/my_module'); 
 
       // Import and use the function
-      let my_module = pyodide.pyimport('src/my_module'); 
+      let my_module = pyodide.pyimport('my_module'); 
       let result = my_module.generate_random_numbers(); 
 
       console.log(result.toJs()); // Print the result in the console
