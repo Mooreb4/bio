@@ -23,8 +23,12 @@
                 result = generate_random_numbers()
                 print(result) 
             `);
+        // Convert NumPy array to JavaScript array
+        let jsArray = output.toJs(); 
 
-            console.log("Output from Python:", output); 
+        // Display the output on the webpage
+        const outputDiv = document.getElementById("output");
+        outputDiv.textContent = "Random Numbers: " + jsArray.join(", "); 
         }
         main();
     </script>
