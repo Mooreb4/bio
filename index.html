@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pyodide Example</title>
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    <title>Pyodide Example</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
 </head>
 <body>
 
-  <script type="text/javascript">
-    async function main() {
-      let pyodide = await loadPyodide();
+    <script type="text/javascript">
+        async function main() {
+            let pyodide = await loadPyodide(); 
 
-      // Load your Python code from an external file
-      await pyodide.loadPackage('my_module'); 
+            // Execute Python code directly
+            let output = pyodide.runPython(`
+                import numpy as np
 
-      // Import and use the function
-      let my_module = pyodide.pyimport('my_module'); 
-      let result = my_module.generate_random_numbers(); 
+                def generate_random_numbers():
+                    """Generates 5 random numbers using NumPy."""
+                    return np.random.rand(5)
 
-      console.log(result.toJs()); // Print the result in the console
-    }
-    main();
-  </script>
+                result = generate_random_numbers()
+                print(result) 
+            `);
+
+            console.log("Output from Python:", output); 
+        }
+        main();
+    </script>
 
 </body>
 </html>
